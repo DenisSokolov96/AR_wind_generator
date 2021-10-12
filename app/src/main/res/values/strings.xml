@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Wind generator AR</string>
+    <string name="title_activity_control">Control</string>
+</resources>

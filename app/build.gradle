@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.google.ar.sceneform.samples.animation"
+        minSdkVersion 25
+        targetSdkVersion 28
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            /*
+         * Sceneform is available for the following ABIs: arm64-v8a, armeabi-v7a,
+         * x86_64 and x86. This sample app enables arm64-v8a to run on
+         * devices and x86 to run on the emulator. Your application should
+         * list the ABIs most appropriate to minimize APK size (arm64-v8a recommended).
+         */
+            abiFilters 'arm64-v8a', 'x86'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    // Sceneform
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.10.0"
+    implementation "com.google.ar.sceneform:animation:1.10.0"
+    implementation 'com.android.support:design:28.0.0'
+
+    api 'com.github.CPS-Platform:cpssdkandroid:0.1.1'
+}
+
+apply plugin: 'com.google.ar.sceneform.plugin'
+
+sceneform.asset('sampledata/models/anemometr.FBX',
+        'default',
+        'sampledata/models/anemometr.sfa',
+        'src/main/res/raw/anemometr')
+
+sceneform.asset('sampledata/models/brake.FBX',
+        'default',
+        'sampledata/models/brake.sfa',
+        'src/main/res/raw/brake')
+
+
+sceneform.asset('sampledata/models/ret.FBX',
+        'default',
+        'sampledata/models/ret.sfa',
+        'src/main/res/raw/ret')
+
+sceneform.asset('sampledata/models/animation_low_v1.FBX',
+        'default',
+        'sampledata/models/animation_low_v1.sfa',
+        'src/main/res/raw/animation_low_v1')
+
+sceneform.asset('sampledata/models/animation_mid_sub_v1.FBX',
+        'default',
+        'sampledata/models/animation_mid_sub_v1.sfa',
+        'src/main/res/raw/animation_mid_sub_v1')
